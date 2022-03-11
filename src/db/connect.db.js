@@ -1,10 +1,9 @@
-
 // require dependencies
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 //  creating connection to database
-const { DATABASE_URL } = process.env;
+const { MONGO_URL } = process.env;
 
 const connectDB = async () => {
   try {
@@ -19,4 +18,3 @@ const connectDB = async () => {
 };
 //   exporting modules
 module.exports = connectDB();
-

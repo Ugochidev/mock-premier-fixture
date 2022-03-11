@@ -11,13 +11,10 @@ beforeAll(async () => {
   await mongoose.connect(url, { useNewUrlParser: true });
 });
 
-// beforeEach(async () => {
-//   await admin.email((admin) => {
-//     const newAdmin = new Admin(admin);
-//     newAdmin.save();
-//   });
-// });
-describe("POST /api/v1", () => {
+beforeEach(async () => {
+  await Team.create(Team);
+});
+describe("Team /api/v1", () => {
   it("should save team in the database", async () => {
     const res = await request.post("/registerTeam").send({
       teamName: "chelsea",

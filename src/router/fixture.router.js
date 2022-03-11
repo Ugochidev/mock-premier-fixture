@@ -11,18 +11,11 @@ const {
 
 const router = express.Router();
 
-//route for creating or adding new fixtures
-router.post("/addfixture",authenticate, authorize, CreateFixtures);
-
-//route for editing or updating fixtures
+//  creating a route
+router.post("/addfixture", authenticate, authorize, CreateFixtures);
 router.patch("/updatefixture", authenticate, authorize, editFixtures);
-
-//route for veiwing all fixtures
 router.get("/getfixtures", authenticate, viewFixtures);
-
-//route for deleting fixtures
 router.delete("/removefixture", authenticate, authorize, removeFixtures);
-
 router.get("/completedfixtures", completedFixtures);
 router.get("/pendingfixtures", pendingFixtures);
 

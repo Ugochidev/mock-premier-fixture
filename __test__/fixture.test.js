@@ -11,12 +11,9 @@ beforeAll(async () => {
   await mongoose.connect(url, { useNewUrlParser: true });
 });
 
-// beforeEach(async () => {
-//   await admin.email((admin) => {
-//     const newAdmin = new Admin(admin);
-//     newAdmin.save();
-//   });
-// });
+beforeEach(async () => {
+  await Fixtures.create(Fixtures);
+});
 describe("fixtures /api/v1", () => {
   it("should save fixture in the database", async () => {
     const res = await request.post("/addfixture").send({
@@ -32,13 +29,32 @@ describe("fixtures /api/v1", () => {
     expect(fixture.homeTeam).toBeTruthy();
     expect(fixture.date).toBeTruthy();
   });
-  describe("Getfixtures/api/v1", () => {
-    it("should GET all users details", async () => {
-      const res = await request.get("/getfixtures");
-      expect(res.status).toBe(200);
-      expect(res.body.message).toBe("Getfixtures");
-    });
+
+  it("should GET all users details", async () => {
+    const res = await request.get("/getfixtures");
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe("Getfixtures");
   });
+  it("should edit fixture", async () => {
+    const res = await request.patch("/updatefixture");
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe("Fixture Updated");
+  });
+  it("should remove fixture", async () => {
+    const res = await request.delete("/removefixture");
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe("Fixture Deleted");
+  });
+  it("should get completed fixture", async () => {
+    const res = await request.get("/completedfixtures");
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe("completed fixtures");
+  });
+   it("should get pending fixture", async () => {
+     const res = await request.get("/pendingfixtures");
+     expect(res.status).toBe(200);
+     expect(res.body.message).toBe("Pending fixtures");
+   });
 });
 afterEach(async () => {
   await Fixtures.deleteMany();

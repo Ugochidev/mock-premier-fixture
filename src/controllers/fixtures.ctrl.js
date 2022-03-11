@@ -81,7 +81,6 @@ const completedFixtures = async (req, res, next) => {
       teamName: 1,
       _id: 0,
     });
-    console.log(allCompletedFixs);
     for (allCompletedFix of allCompletedFixs) {
       if (allCompletedFix.status === "completed") {
         completedFixts.push(allCompletedFix);

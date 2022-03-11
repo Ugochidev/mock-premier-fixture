@@ -62,9 +62,44 @@ app.post("/addfixture", async (req, res) => {
 
   res.status(201).json(fixture);
 });
+app.patch("/updatefixture", (req, res) => {
+  let editfixture = [
+    {
+      date: "2022-03-30",
+    },
+  ];
+  return res.status(200).json({ message: "Fixture Updated" });
+});
+app.delete("/removefixture", (req, res) => {
+  let removeFixture = [
+    {
+      date: "2022-03-30",
+    },
+  ];
+  return res.status(200).json({ message: "Fixture Deleted" });
+});
+app.get("/completedfixtures", (req, res) => {
+  let completedFixture = [
+    {
+      teamName: 1,
+      _id: 0,
+    },
+  ];
+  return res.status(200).json({ message: "completed fixtures" });
+});
+app.get("/Pendingfixtures", (req, res) => {
+  let pendingFixture = [
+    {
+      teamName: 1,
+      _id: 0,
+    },
+  ];
+  return res.status(200).json({ message: "Pending fixtures" });
+});
 app.post("/loginUser", async (req, res) => {
   const { email, password } = req.body;
-  res.status(200).json("login successfully");
+  const login = { email, password };
+  res.status(200).json(login);
 });
 app.post("/loginAdmin", async (req, res) => {
   const { email, password } = req.body;
@@ -110,6 +145,7 @@ app.patch("/editteam", (req, res) => {
   ];
   return res.status(200).json({ message: "Team Updated" });
 });
+
 app.delete("/deleteteam", (req, res) => {
   let removeTeam = [
     {

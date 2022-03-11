@@ -10,7 +10,7 @@ const { authenticate, authorize } = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
-//route for creating or adding new teams
+//route for creating or adding new team
 router.post("/addteam", authenticate, authorize, registerTeam);
 
 //route for updating team details
