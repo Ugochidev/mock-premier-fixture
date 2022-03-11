@@ -13,7 +13,7 @@ const router = express.Router();
 
 //  creating a route
 router.post("/addfixture", authenticate, authorize, CreateFixtures);
-router.patch("/updatefixture", authenticate, authorize, editFixtures);
+router.patch("updatefixture/", authenticate, authorize, editFixtures);
 router.get("/getfixtures", authenticate, viewFixtures);
 router.delete("/removefixture", authenticate, authorize, removeFixtures);
 router.get("/completedfixtures", completedFixtures);
